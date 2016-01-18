@@ -30,3 +30,7 @@ out/
 *.obj
 *.a
 *.pyc
+
+# Other files
+*.jpg
+*.png

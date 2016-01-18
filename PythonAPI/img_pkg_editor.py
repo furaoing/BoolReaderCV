@@ -22,7 +22,7 @@ class Editor(object):
             tmp_obj.append({"id": id, "score": score})
         sorted_obj = self.sort(tmp_obj)
         sorted_id = [item["id"] for item in sorted_obj]
-        return_pkg = {"error": 0, "result": sorted_id}
+        return_pkg = {"error": 0, "img_result": sorted_id}
 
         self.handler.close()
 
