@@ -1,0 +1,1 @@
+/opt/anaconda3/bin/python3.5 /apps/BoolReaderCV/PythonAPI/my_http.py &
