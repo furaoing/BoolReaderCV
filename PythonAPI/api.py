@@ -33,6 +33,8 @@ class ApiHandle(tornado.web.RequestHandler):
 
         pkg_rep = copy.deepcopy(pkg_obj)
         editor = Editor()
+        # short socket connection
+        # TODO: Change short connection to long connection
         res_obj = editor.edit(pkg_rep)
 
         res = json.dumps(res_obj)

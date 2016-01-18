@@ -24,5 +24,7 @@ class Editor(object):
         sorted_id = [item["id"] for item in sorted_obj]
         return_pkg = {"error": 0, "result": sorted_id}
 
+        self.handler.close()
+
         return return_pkg
 

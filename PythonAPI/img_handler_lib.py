@@ -49,6 +49,9 @@ class img_handler(object):
         score, error = self.my_actor.score(image_pth)
         return score, error
 
+    def close(self):
+        self.s.close()
+
 if __name__ == "__main__":
     image_pth = r"/home/furaoing/roy_tensorflow_cv/face++test_ws/debug_test/5.jpg"
 
