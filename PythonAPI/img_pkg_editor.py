@@ -19,7 +19,7 @@ class Editor(object):
             img_pth = item["img_pth"]
 
             score, error = self.handler.proc(img_pth)
-            if score > 0:
+            if score >= 0:
                 tmp_obj.append({"id": id, "score": score})
             else:
                 pass

@@ -6,10 +6,19 @@ from api import ApiHandle
 import os
 import logging
 import time
-
 import sys
 
-define("port", default=6680, help="run on the given port", type=int)
+from config import http_config
+
+
+def parse_port():
+    int_port = None
+    if len(sys.argv) > 1:
+        _port = sys.argv[1]
+        int_port = int(_port)
+    else:
+        pass
+    return int_port
 
 
 class Application(tornado.web.Application):
@@ -32,6 +41,18 @@ def main():
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == "__main__":
+    port = None
+
+    if parse_port():
+        port = parse_port()
+    else:
+        port = http_config.api_port
+        # if no argument given, use default port in config.py
+    try:
+        define("port", default=port, help="run on the given port", type=int)
+    except Exception:
+        print("Define Port Not Succeed")
+        raise Exception
 
     # Script Initialization Start
 

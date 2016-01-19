@@ -8,3 +8,5 @@ max_c = 5
 class http_config(object):
     img_suffix = "jpg"
     img_folder = "uploads"
+
+    api_port = 8080
