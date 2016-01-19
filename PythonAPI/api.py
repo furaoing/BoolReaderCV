@@ -9,6 +9,8 @@ from py_utility import system
 import os
 from config import http_config
 import copy
+import queue
+
 
 
 class ApiHandle(tornado.web.RequestHandler):
@@ -21,6 +23,8 @@ class ApiHandle(tornado.web.RequestHandler):
         # pkg_obj = {"error": 0, "img_result": ["123", "234"]}
         # res = json.dumps(pkg_obj)
 
+        trash_queue = queue.Queue()
+
         for item in pkg_obj["data"]:
             b64_str = item["b64"]
 
@@ -31,6 +35,9 @@ class ApiHandle(tornado.web.RequestHandler):
 
             item["img_pth"] = img_pth
 
+            trash_queue.put(img_pth)
+            #  Put img_pth into queue for later clean up
+
         pkg_rep = copy.deepcopy(pkg_obj)
         editor = Editor()
         # short socket connection
@@ -38,6 +45,13 @@ class ApiHandle(tornado.web.RequestHandler):
         res_obj = editor.edit(pkg_rep)
 
         res = json.dumps(res_obj)
+
+        """ File Clean Up  """
+        try:
+            while not trash_queue.empty():
+                os.remove(trash_queue.get())
+        except Exception:
+            print("Queue Operation Error")
 
         self.write(res)
 
