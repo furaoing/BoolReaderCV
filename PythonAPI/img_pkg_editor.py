@@ -19,7 +19,11 @@ class Editor(object):
             img_pth = item["img_pth"]
 
             score, error = self.handler.proc(img_pth)
-            tmp_obj.append({"id": id, "score": score})
+            if score > 0:
+                tmp_obj.append({"id": id, "score": score})
+            else:
+                pass
+                # dump all unqualified images
         sorted_obj = self.sort(tmp_obj)
         sorted_id = [item["id"] for item in sorted_obj]
         return_pkg = {"error": 0, "img_result": sorted_id}
