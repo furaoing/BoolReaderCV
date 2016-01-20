@@ -9,4 +9,4 @@ class http_config(object):
     img_suffix = "jpg"
     img_folder = "uploads"
 
-    api_port = 8080
+    api_port = 6680

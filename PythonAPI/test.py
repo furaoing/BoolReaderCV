@@ -3,7 +3,7 @@
 import json
 import requests
 
-url = "http://127.0.0.1:8080/ImgAPI"
+url = "http://127.0.0.1:6680/ImgAPI"
 
 data = {
     "data":
