@@ -25,6 +25,7 @@ $RECYCLE.BIN/
 
 # IDE compliation output
 out/
+__pycache__/
 *.class
 *.out
 *.obj
