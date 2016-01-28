@@ -51,9 +51,12 @@ class Editor(object):
 
             if error == 0:
                 if score >= 0:
-                    is_chart = tf_ref(img_pth)
-                    chart_punishment = 0.5 if is_chart else 0
-                    score -= chart_punishment
+                    try:
+                        is_chart = tf_ref(img_pth)
+                        chart_punishment = 0.5 if is_chart else 0
+                        score -= chart_punishment
+                    except Exception:
+                        print("Tensorflow Image Reading Exception Happened")
                     print("score: " + score.__str__())
                     tmp_obj.append({"id": id, "score": score})
                 else:
