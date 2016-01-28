@@ -1,5 +1,4 @@
-Tornado-FILE API
-============
+How to start the server:
 
-IMAGE POST API in Tornado
+python3 my_http.py [port]
 
